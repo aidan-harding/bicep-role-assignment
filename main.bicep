@@ -21,7 +21,7 @@ resource newResourceGroup 'Microsoft.Resources/resourceGroups@2024-03-01' = {
 }
 
 module storageAccount 'storage.bicep' = {
-  name: 'storageModule'
+  name: 'st${projectName}${environmentName}${locationName}${instance}'
   scope: newResourceGroup
   params: {
     storageLocation: location
@@ -36,5 +36,6 @@ module dataFactory 'data-factory.bicep' = {
     location: location
     name: 'adf-${projectName}-${environmentName}-${locationName}-${instance}'
     dfsStorageUrl: storageAccount.outputs.dfsUri
+    storageName: storageAccount.name
   }
 }

@@ -17,4 +17,3 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-04-01' = {
 }
 
 output dfsUri string = storageAccount.properties.primaryEndpoints.dfs
-output id string = storageAccount.id
